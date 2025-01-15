@@ -1,0 +1,8 @@
+networks:
+    backend_network: false
+
+volumes:
+    pgadmin_data:
+
+stacks:
+    postgres: docker-compose.postgres.yml

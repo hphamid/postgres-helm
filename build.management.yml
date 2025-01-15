@@ -1,0 +1,22 @@
+build:
+    selections:
+        helm:
+            directory: helm
+            cmd: 
+                - helm template postgres
+
+publish:
+    selections:
+        helm:
+            directory: helm
+            cmd: 
+                - helm template postgres
+                - helm package postgres --destination charts
+                - helm repo index ./charts
+
+swarm:
+    selections:
+        dev:
+            directory: services
+            files:
+                - swarm-management.yml
