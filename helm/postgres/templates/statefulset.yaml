@@ -42,9 +42,29 @@ spec:
           image: "{{ .Values.image.repository }}:{{ include "postgres.postgresVersion" . }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - name: postgres-direct
+            - name: postgres
               containerPort: 5432
               protocol: TCP
+          # livenessProbe:
+          #   successThreshold: {{ .Values.livenessProbe.successThreshold }}
+          #   failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
+          #   periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
+          #   timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
+          #   exec:
+          #     command:
+          #     - pg_isready
+          #     - -h
+          #     - localhost
+          # readinessProbe:
+          #   successThreshold: {{ .Values.readinessProbe.successThreshold }}
+          #   failureThreshold: {{ .Values.readinessProbe.failureThreshold }}
+          #   periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
+          #   timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
+          #   exec:
+          #     command:
+          #     - pg_isready
+          #     - -h
+          #     - localhost
           {{- if .Values.volume.enabled }}
           volumeMounts:
             - mountPath: {{ .Values.volume.mountPath | quote }}
@@ -53,51 +73,13 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
-          {{- range $key, $value := .Values.postgres.environmentVariables }}
+          {{- range $key, $value := .Values.environmentVariables }}
           - name: {{ $key }}
             value: {{ $value | quote }}
           {{- end }}
           {{- if .Values.volume.enabled }}
           - name: PGDATA
             value: {{ .Values.volume.mountPath | quote }}
-          {{- end }}
-        - name: {{ .Chart.Name }}-pgbouncer
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.pgbouncer.image.repository }}:{{ .Values.pgbouncer.image.version }}"
-          imagePullPolicy: {{ .Values.pgbouncer.image.pullPolicy }}
-          ports:
-            - name: postgres
-              containerPort: 5432
-              protocol: TCP
-          livenessProbe:
-            successThreshold: {{ .Values.livenessProbe.successThreshold }}
-            failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
-            periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
-            timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
-            exec:
-              command:
-              - pg_isready
-              - -h
-              - localhost
-          readinessProbe:
-            successThreshold: {{ .Values.readinessProbe.successThreshold }}
-            failureThreshold: {{ .Values.readinessProbe.failureThreshold }}
-            periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
-            timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
-            exec:
-              command:
-              - pg_isready
-              - -h
-              - localhost
-          resources:
-            {{- toYaml .Values.resources | nindent 12 }}
-          env:
-          - name: DB_HOST
-            value: {{ include "postgres.fullname" . }}
-          {{- range $key, $value := .Values.pgbouncer.environmentVariables }}
-          - name: {{ $key }}
-            value: {{ $value | quote }}
           {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:

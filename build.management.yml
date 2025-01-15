@@ -13,6 +13,9 @@ publish:
                 - helm template postgres
                 - helm package postgres --destination charts
                 - helm repo index ./charts
+                - helm template pgbouncer
+                - helm package pgbouncer --destination charts
+                - helm repo index ./charts
 
 swarm:
     selections:

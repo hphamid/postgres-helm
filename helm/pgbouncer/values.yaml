@@ -1,4 +1,4 @@
-# Default values for postgres.
+# Default values for pgbouncer.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -6,20 +6,21 @@ enabled: true
 replicaCount: 1
 
 image:
-  repository: postgres
+  repository: edoburu/pgbouncer
   pullPolicy: IfNotPresent
   versionOverride: "*"
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
-terminationGracePeriodSeconds: 10
-
 environmentVariables:
-  POSTGRES_USER: admin
-  POSTGRES_PASSWORD: admin
-  POSTGRES_DB: postgres
-  PGDATA: /var/lib/postgresql/data/dbdata
+  DB_USER: admin
+  DB_PASSWORD: admin
+  DB_HOST: postgres
+  DB_NAME: "*" # All databases
+  AUTH_TYPE: scram-sha-256
+  POOL_MODE: transaction
+  ADMIN_USERS: admin
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -57,14 +58,14 @@ ingress:
     # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     # nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
   hosts:
-    - host: postgres.local
+    - host: pgbouncer.local
       paths:
         - path: /
           pathType: ImplementationSpecific
   tls: []
-  #  - secretName: postgres-tls
+  #  - secretName: pgbouncer-tls
   #    hosts:
-  #      - postgres.local
+  #      - pgbouncer.local
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -83,12 +84,6 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
-volume:
-  enabled: true
-  className: ""
-  size: 3Gi
-  mountPath: /var/lib/postgresql/data/dbdata
 
 tests:
   enabled: true
