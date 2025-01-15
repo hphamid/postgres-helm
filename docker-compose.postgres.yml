@@ -30,8 +30,6 @@ services:
       - 5433:5432
     networks:
       - backend_network
-    healthcheck:
-      test: ['CMD', 'pg_isready', '-h', 'localhost']
 
   pgbouncer:
     # https://github.com/edoburu/docker-pgbouncer/blob/master/README.md

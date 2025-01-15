@@ -30,7 +30,6 @@ pgbouncer:
   environmentVariables:
     DB_USER: admin
     DB_PASSWORD: admin
-    DB_HOST: postgres-db-direct
     DB_NAME: "*" # All databases
     AUTH_TYPE: scram-sha-256
     POOL_MODE: transaction
