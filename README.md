@@ -1,7 +1,9 @@
-# Postgres Light
+# Postgres Helm Charts
 
 [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/postgres)](https://artifacthub.io/packages/search?repo=postgres)
 [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/postgres-pgbouncer)](https://artifacthub.io/packages/search?repo=postgres-pgbouncer)
+
+Lightweight postgres helm chart for development purposes.
 
 ## Run With Docker
 ```bash
