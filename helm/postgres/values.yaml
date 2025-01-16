@@ -88,7 +88,7 @@ volume:
   enabled: true
   className: ""
   size: 3Gi
-  mountPath: /var/lib/postgresql/data/dbdata
+  mountPath: /var/lib/postgresql/data
 
 tests:
   enabled: true
