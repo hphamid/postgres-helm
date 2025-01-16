@@ -1,6 +1,7 @@
 # Postgres Light
 
-[![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/postgres)](https://artifacthub.io/packages/search?repo=postgres)
+[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/postgres)](https://artifacthub.io/packages/search?repo=postgres)
+[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/postgres-pgbouncer)](https://artifacthub.io/packages/search?repo=postgres-pgbouncer)
 
 ## Run With Docker
 ```bash
