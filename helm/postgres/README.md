@@ -10,7 +10,7 @@ A lightweight postgres helm chart for development purposes, check out:
 To install the chart with the release name `postgres` run:
 
 ```bash
-$ helm repo add postgres https://raw.githubusercontent.com/hansehe/postgres-helm/master/helm/charts
+$ helm repo add postgres https://raw.githubusercontent.com/hansehe/postgres-helm/master/helm/charts/postgres
 $ helm install postgres postgres/postgres
 ```
 
