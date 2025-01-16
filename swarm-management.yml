@@ -2,6 +2,7 @@ networks:
     backend_network: false
 
 volumes:
+    postgres_data:
     pgadmin_data:
 
 stacks:
