@@ -5,5 +5,8 @@ volumes:
     postgres_data:
     pgadmin_data:
 
+configs:
+    pgbouncer_userlist.txt: pgbouncer_userlist.txt
+
 stacks:
     postgres: docker-compose.postgres.yml

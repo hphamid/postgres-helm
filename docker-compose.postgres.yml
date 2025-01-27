@@ -35,6 +35,8 @@ services:
     # https://github.com/edoburu/docker-pgbouncer/blob/master/README.md
     image: edoburu/pgbouncer:latest
     hostname: postgres-db
+    entrypoint: []
+    command: ["sh", "-c", "cp /etc/pgbouncer_temp/* /etc/pgbouncer/ && /entrypoint.sh /usr/bin/pgbouncer /etc/pgbouncer/pgbouncer.ini"]
     environment:
       DB_USER: admin
       DB_PASSWORD: admin
@@ -45,6 +47,9 @@ services:
       ADMIN_USERS: admin
     ports:
       - 5432:5432
+    configs:
+      - source: pgbouncer_userlist.txt
+        target: /etc/pgbouncer_temp/userlist.txt
     networks:
       - backend_network
     healthcheck:
@@ -53,6 +58,10 @@ services:
 
 networks:
   backend_network:
+    external: true
+
+configs:
+  pgbouncer_userlist.txt:
     external: true
 
 volumes:

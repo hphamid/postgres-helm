@@ -3,9 +3,9 @@ entries:
   postgres:
   - apiVersion: v2
     appVersion: "13.12"
-    created: "2025-01-16T01:16:48.6012249+01:00"
+    created: "2025-01-27T16:07:58.3091466+01:00"
     description: Postgres helm chart for Kubernetes
-    digest: 0c6e1cf41166f8a679a4cc2880d5010b349a94544c884d6265321eafa383e549
+    digest: fd5d0c6c0070fa246ce4997004a4b768ec25b69a62eee13ce6ee705c86c7c583
     home: https://github.com/hansehe/postgres-helm
     icon: https://raw.githubusercontent.com/hansehe/postgres-helm/master/helm/postgres.png
     keywords:
@@ -20,4 +20,4 @@ entries:
     urls:
     - postgres-0.1.0.tgz
     version: 0.1.0
-generated: "2025-01-16T01:16:48.6006019+01:00"
+generated: "2025-01-27T16:07:58.3068366+01:00"

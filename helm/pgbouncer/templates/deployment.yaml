@@ -33,6 +33,7 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ include "pgbouncer.pgbouncerVersion" . }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: ["sh", "-c", "cp /etc/pgbouncer_temp/* /etc/pgbouncer/ && /entrypoint.sh /usr/bin/pgbouncer /etc/pgbouncer/pgbouncer.ini"]
           ports:
             - name: pgbouncer
               containerPort: 5432
@@ -64,6 +65,16 @@ spec:
           - name: {{ $key }}
             value: {{ $value | quote }}
           {{- end }}
+          volumeMounts:
+            - name: pgbouncer-userlist
+              mountPath: /etc/pgbouncer_temp/
+      volumes:
+        - name: pgbouncer-userlist
+          configMap: 
+            name: {{ include "pgbouncer.fullname" . }}-configmap
+            items:
+              - key: pgbouncer_userlist.txt
+                path: userlist.txt
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
