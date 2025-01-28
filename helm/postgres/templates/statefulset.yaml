@@ -36,17 +36,6 @@ spec:
             claimName: {{ include "postgres.fullname" . }}
       {{- end }}
       containers:
-        {{- if .Values.volume.enabled }}
-        - name: {{ .Chart.Name }}-permissions
-          image: {{ .Values.volume.initPermissions.image | quote }}
-          command:
-            {{- toYaml .Values.volume.initPermissions.command | nindent 12 }}
-          securityContext:
-            runAsUser: 0
-          volumeMounts:
-            - name: postgres-volume
-              mountPath: /var/lib/postgresql/data
-        {{- end }}
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
