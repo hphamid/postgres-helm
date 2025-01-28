@@ -21,6 +21,7 @@ environmentVariables:
   POSTGRES_DB: postgres
   PGDATA: /var/lib/postgresql/data/dbdata
 
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
@@ -89,6 +90,9 @@ volume:
   className: ""
   size: 3Gi
   mountPath: /var/lib/postgresql/data
+  initPermissions: 
+    image: busybox:latest
+    command: ["sh", "-c", "chown -R 999:999 /var/lib/postgresql/data"]
 
 tests:
   enabled: true
