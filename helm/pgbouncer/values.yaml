@@ -23,6 +23,8 @@ environmentVariables:
   ADMIN_USERS: admin
 
 config:
+  deployment:
+    command: ["sh", "-c", "cp /etc/pgbouncer_temp/* /etc/pgbouncer/ && /entrypoint.sh /usr/bin/pgbouncer /etc/pgbouncer/pgbouncer.ini"]
   # A set of key-value pairs, where the key is the username and the value is the password.
   users:
     admin: admin

@@ -33,7 +33,8 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ include "pgbouncer.pgbouncerVersion" . }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          command: ["sh", "-c", "cp /etc/pgbouncer_temp/* /etc/pgbouncer/ && /entrypoint.sh /usr/bin/pgbouncer /etc/pgbouncer/pgbouncer.ini"]
+          command:
+            {{- toYaml .Values.config.deployment.command | nindent 12 }}
           ports:
             - name: pgbouncer
               containerPort: 5432

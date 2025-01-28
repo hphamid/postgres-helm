@@ -4,6 +4,7 @@ build:
             directory: helm
             cmd: 
                 - helm template postgres
+                - helm template pgbouncer
 
 publish:
     selections:
