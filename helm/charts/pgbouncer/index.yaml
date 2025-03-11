@@ -3,9 +3,9 @@ entries:
   pgbouncer:
   - apiVersion: v2
     appVersion: latest
-    created: "2025-01-28T11:00:44.8423711+01:00"
+    created: "2025-03-11T16:17:54.2379919+01:00"
     description: Pgbouncer helm chart for Kubernetes
-    digest: b29d8cf1c59c0b89d4e56bdf2d523fd86d467f8e0c2ae22f71917920812e9328
+    digest: 95a3136da11b54cbacf87a790b49b34dfe7f8fdd695bbc2bb8c7430a03207ebc
     home: https://github.com/hansehe/postgres-helm
     icon: https://raw.githubusercontent.com/hansehe/postgres-helm/master/helm/postgres.png
     keywords:
@@ -21,4 +21,4 @@ entries:
     urls:
     - pgbouncer-0.1.0.tgz
     version: 0.1.0
-generated: "2025-01-28T11:00:44.8418072+01:00"
+generated: "2025-03-11T16:17:54.2374508+01:00"
