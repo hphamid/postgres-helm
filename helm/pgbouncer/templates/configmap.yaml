@@ -7,7 +7,11 @@ metadata:
     {{- include "pgbouncer.labels" . | nindent 4 }}
 data:
   pgbouncer_userlist.txt: |-
-    {{- range $key, $value := .Values.config.users }}
-    {{ $key | quote }} {{ $value | quote }}
+    {{- range .Values.config.users }}
+    {{ .username | quote }} {{ .password | quote }}
     {{- end }}
+  {{- if .Values.config.init.enabled }}
+  pgbouncer.ini: |-
+    {{- .Values.config.init.content | nindent 4 }}
+  {{- end }}
 {{- end }}
