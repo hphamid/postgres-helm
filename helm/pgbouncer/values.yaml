@@ -15,18 +15,10 @@ nameOverride: ""
 fullnameOverride: ""
 environmentVariables: {}
 
-initContainers:
-  - name: pgbouncer-init
-    image: busybox
-    command: ["sh", "-c", "addgroup -S psqlgroup && adduser -S -G psqlgroup admin"]
-    securityContext:
-      runAsUser: 0
-      privileged: true
-
 config:
   deployment:
     # command: ["sh", "-c", "cp /etc/pgbouncer_temp/* /etc/pgbouncer/ && /entrypoint.sh /usr/bin/pgbouncer /etc/pgbouncer/pgbouncer.ini"]
-    command: ["sh", "-c", "cp /etc/pgbouncer_temp/* /etc/pgbouncer/ && exec /usr/bin/pgbouncer /etc/pgbouncer/pgbouncer.ini"]
+    command: ["sh", "-c", "addgroup -S psqlgroup && adduser -S -G psqlgroup admin && cp /etc/pgbouncer_temp/* /etc/pgbouncer/ && exec /usr/bin/pgbouncer /etc/pgbouncer/pgbouncer.ini"]
   # Set password to md5 hash of "admin" for user "admin" as such:
   # md5passwordhash="md5$(echo -n "${DB_PASSWORD}${DB_USER}" | md5sum | cut -f 1 -d ' ')"
   # echo $md5passwordhash
@@ -87,6 +79,8 @@ securityContext:
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
   # runAsUser: 1000
+  runAsUser: 0
+  privileged: true
 
 service:
   type: ClusterIP
