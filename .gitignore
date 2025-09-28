@@ -24,3 +24,5 @@ docker-compose.run.*.yml
 docker-compose.test.*.yml
 docker-compose.publish.*.yml
 .env
+
+.DS_Store

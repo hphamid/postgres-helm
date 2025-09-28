@@ -1,8 +1,8 @@
 apiVersion: v2
 name: postgres
 description: Postgres helm chart for Kubernetes
-home: https://github.com/hansehe/postgres-helm
-icon: https://raw.githubusercontent.com/hansehe/postgres-helm/master/helm/postgres.png
+home: https://github.com/hphamid/postgres-helm
+icon: https://raw.githubusercontent.com/hphamid/postgres-helm/master/helm/postgres.png
 keywords:
 - postgres
 maintainers:

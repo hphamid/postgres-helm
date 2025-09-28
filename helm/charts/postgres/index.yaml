@@ -3,21 +3,21 @@ entries:
   postgres:
   - apiVersion: v2
     appVersion: "13.12"
-    created: "2025-03-14T14:41:48.5207659+01:00"
+    created: "2025-09-28T16:57:22.140296+02:00"
     description: Postgres helm chart for Kubernetes
-    digest: c7aae4b1141fbe6aa9ee8925d52855952aa8625f165d3b12cf19d2ad3a6cd9c9
+    digest: 35a9a490ca8d903d5147cd2066f67596eae947ba473edd600e124ee1ce42c742
     home: https://github.com/hansehe/postgres-helm
     icon: https://raw.githubusercontent.com/hansehe/postgres-helm/master/helm/postgres.png
     keywords:
-    - postgres
+      - postgres
     maintainers:
-    - email: hans.erik.heggem@gmail.com
-      name: hansehe
+      - email: hans.erik.heggem@gmail.com
+        name: hansehe
     name: postgres
     sources:
-    - https://github.com/hansehe/postgres-helm
+      - https://github.com/hansehe/postgres-helm
     type: application
     urls:
-    - postgres-0.1.0.tgz
+      - postgres/postgres-0.1.0.tgz
     version: 0.1.0
 generated: "2025-03-14T14:41:48.5197022+01:00"
